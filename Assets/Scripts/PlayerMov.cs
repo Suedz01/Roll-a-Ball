@@ -45,11 +45,23 @@ public class PlayerMov : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 8)
+        {
+            Debug.Log("Ground!");
             isGrounded = true;
+        }
     }
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.layer == 8)
             isGrounded = false;
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            Debug.Log("Got it!");
+            Destroy(collision, 1);
+        }
     }
 }
